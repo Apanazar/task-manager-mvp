@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Трекер задач</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Создать задачу</h1>
+        <form method="POST" action="/task/create">
+            <label for="user"></label>
+            <select name="user_id" id="user">
+                {{range .Users}}
+                <option value="{{.ID}}">{{.Name}}</option>
+                {{end}}
+            </select>
+            <input type="text" name="description" placeholder="Название" required>
+            <input type="number" name="rate" placeholder="Оплата" required>
+            <input type="number" name="deadline" placeholder="Срок" required>
+            <button type="submit" class="okay">ОК</button>
+        </form>
+        <a href="/users">Менеджер пользователей</a>
+    </header>
+    <hr>
+    <div class="filter">
+        <form method="GET" action="/">
+            <label for="filter_user">Фильтровать по:</label>
+            <select name="user_id" id="filter_user">
+                <option value="0">Все пользователи</option>
+                {{range .Users}}
+                <option value="{{.ID}}" {{if eq .ID $.Filter.UserID}}selected{{end}}>{{.Name}}</option>
+                {{end}}
+            </select>
+            <label for="sort_by">Сортировать по:</label>
+            <select name="sort_by" id="sort_by">
+                <option value="none">Нет</option>
+                <option value="earned" {{if eq $.Filter.SortBy "earned"}}selected{{end}}>Заработано</option>
+            </select>
+            <button type="submit">Применить</button>
+        </form>
+    </div>
+    <div class="row">
+        <div class="column">
+            <h2>В ожидании</h2>
+            {{range .Tasks}}
+            {{if eq .Status "В ожидании"}}
+            <div class="task">
+                <p>
+                    Ответственный: <u class="person">{{.Name}}</u><br>
+                    Задача: <u class="persontask">{{.Description}}</u><br>
+                    Статус: {{.Status}}<br>
+                    Оплата: {{.Rate}} (руб/час)<br>
+                    Срок: {{.Deadline}} часов<br>
+                    Заработано: {{.Earned}}р<br>
+                </p>
+                <div class="buttons">
+                    <form method="POST" action="/task/update">
+                        <input type="hidden" name="task_id" value="{{.ID}}">
+                        <button type="submit" name="action" value="start" class="start">Начать</button>
+                    </form>
+                    <form method="POST" action="/task/delete" style="display:inline;">
+                        <input type="hidden" name="task_id" value="{{.ID}}">
+                        <button type="submit" class="delete">Удалить</button>
+                    </form>
+                </div>
+            </div>
+            {{end}}
+            {{end}}
+        </div>
+        <div class="column">
+            <h2>В работе</h2>
+            {{range .Tasks}}
+            {{if eq .Status "В работе"}}
+            <div class="task">
+                <p>
+                    Ответственный: <u class="person">{{.Name}}</u><br>
+                    Задача: <u class="persontask">{{.Description}}</u><br>
+                    Статус: {{.Status}}<br>
+                    Оплата: {{.Rate}} (руб/час)<br>
+                    Срок: {{.Deadline}} часов<br>
+                    Заработано: {{.Earned}}р<br>
+                </p>
+                <div class="buttons">
+                    <form method="POST" action="/task/update">
+                        <input type="hidden" name="task_id" value="{{.ID}}">
+                        <button type="submit" name="action" value="stop" class="stop">Завершить</button>
+                    </form>
+                    <form method="POST" action="/task/delete" style="display:inline;">
+                        <input type="hidden" name="task_id" value="{{.ID}}">
+                        <button type="submit" class="delete">Удалить</button>
+                    </form>
+                </div>
+            </div>
+            {{end}}
+            {{end}}
+        </div>
+        <div class="column">
+            <h2>Завершено</h2>
+            {{range .Tasks}}
+            {{if eq .Status "Завершена"}}
+            <div class="task">
+                <p>
+                    Ответственный: <u class="person">{{.Name}}</u><br>
+                    Задача: <u class="persontask">{{.Description}}</u><br>
+                    Статус: {{.Status}}<br>
+                    Оплата: {{.Rate}} (руб/час)<br>
+                    Срок: {{.Deadline}} часов<br>
+                    Заработано: {{.Earned}}р<br>
+                </p>
+                <div class="buttons">
+                    <form method="POST" action="/task/delete" style="display:inline;">
+                        <input type="hidden" name="task_id" value="{{.ID}}">
+                        <button type="submit" class="delete">Удалить</button>
+                    </form>
+                </div>
+            </div>
+            {{end}}
+            {{end}}
+        </div>
+    </div>
+</body>
+</html>

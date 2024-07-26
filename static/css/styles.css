@@ -1,0 +1,226 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+select {
+    height: 40px;
+    width: 200px;
+    border: 1px solid white;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.person {
+    background-color: rgba(255, 255, 0, 0.589);
+}
+
+.persontask {
+    background-color: rgba(255, 255, 0, 0.589);
+}
+
+.filter {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.filter form {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.filter label, .filter select, .filter button {
+    margin: 5px;
+    padding: 10px;
+}
+
+
+.users {
+    width: 800px;
+    margin-top: 80px;
+    background-color: #3a7ca2;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: -70px;
+}
+
+header {
+    width: 100%;
+    background-color: #3a7ca2;
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    box-sizing: border-box;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin-top: 15px;
+}
+
+header {
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 1200px;
+}
+
+header .task-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    margin: 5px;
+    padding: 10px;
+    height: 8px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+header .task-form label,
+header .task-form select,
+header .task-form button {
+    margin: 5px;
+    padding: 10px;
+}
+
+header .task-form select,
+header .task-form input {
+    width: 150px;
+}
+
+header .task-form button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+header .task-form button:hover {
+    background-color: #0056b3;
+}
+
+.row {
+    width: 80%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.column {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.column h2 {
+    text-align: center;
+}
+
+.task {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    margin: 5px;
+}
+
+.okay {
+    height: 35px;
+    width: 40px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+button.start {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button.stop {
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button.delete {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button.start:hover {
+    background-color: darkgreen;
+}
+
+button.stop:hover {
+    background-color: goldenrod;
+}
+
+button.delete:hover {
+    background-color: darkred;
+}
+
+a {
+    margin-top: 10px;
+    display: block;
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.center {
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.center form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.center form input {
+    margin: 5px 0;
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.center form button {
+    margin-top: 10px;
+    padding: 10px 20px;
+}

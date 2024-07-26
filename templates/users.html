@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Менеджер пользователей</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Менеджер пользователей</h1>
+        <a href="/">Трекер задач</a>
+    </header>
+    
+    <div class="users">
+        <h1>Создать пользователя</h1>
+        <form method="POST" action="/user/create">
+            <input type="text" name="name" placeholder="Имя пользователя" required>
+            <input type="text" name="passport" placeholder="Серия и номер" required>
+            <button type="submit" class="okay">OK</button>
+        </form>
+    </div>
+
+    <div class="users">
+        <h1>Изменить данные пользователя</h1>
+        <form method="POST" action="/user/update">
+            <select name="user_id" id="user_id">
+                {{range .}}
+                <option value="{{.ID}}">{{.Name}}</option>
+                {{end}}
+            </select>
+            <input type="text" name="user_name" placeholder="Имя пользователя" required>
+            <input type="text" name="new_passport" placeholder="Cерия и номер" required>
+            <button type="submit" class="okay">OK</button>
+        </form>
+    </div>
+    
+
+    <div class="users">
+        <h1>Удалить пользователя</h1>
+        <form method="POST" action="/user/delete">
+            <select name="user_id" id="user_id">
+                {{range .}}
+                <option value="{{.ID}}">{{.Name}}</option>
+                {{end}}
+            </select>
+            <button type="submit" class="okay">OK</button>
+        </form>
+    </div>
+</body>
+</html>
